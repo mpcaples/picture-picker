@@ -14,23 +14,36 @@ h1 {
     margin-bottom: 15px; 
     text-align: center;
     font-family: 'Rajdhani', sans-serif; 
-    font-size: 2.75rem; 
-    letter-spacing: 15px;
-    color: #555
+    font-size: 44px; 
+    letter-spacing: 16px;
+    color: rgb(26, 25, 25)
 }
 
-.loader {
-    position: fixed; 
-    top: 0; 
-    bottom: 0; 
-    left: 0; 
-    right: 0; 
-    background-color: rgba(255, 255, 255, 0.8);
+.image-container {
+    margin: 10px 30%; 
+}
+
+.image-container img {
+    width: 100%; 
+    margin-top: 8px; 
+}
+
+ .loader-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
 .loader img {
     position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+} 
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 22px; 
+    }
+
+    .image-container {
+        margin: 10px; 
+    }
 }
