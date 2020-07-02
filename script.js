@@ -3,9 +3,10 @@ const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader'); 
 
 // Unsplash API 
-const accessKey = 'LYVKBOGxzLRyn6OYr8W1wK1bZKd2VXEvqIxbMWh3n3g'
+const accessKey = 'LYVKBOGxzLRyn6OYr8W1wK1bZKd2VXEvqIxbMWh3n3g'; 
+let query = 'tiger'; 
 const count = 10; 
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&count=${count}`; 
+const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&query=${query}&count=${count}`; 
 
 // Initiate an empty array to contain photos
 let photosArray = []; 
