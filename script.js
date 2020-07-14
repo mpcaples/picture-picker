@@ -16,7 +16,7 @@ form.addEventListener('submit', formSubmitted);
 
 function formSubmitted(e) {
     e.preventDefault(); 
-    let searchTerm = input.value; 
+    let searchTerm = input.value;  
     searchForPictures(searchTerm); 
 }; 
 
@@ -50,6 +50,7 @@ async function getPhotos() {
         let response = await fetch(apiURL); 
         photosArray = await response.json(); 
         displayPhotos(); 
+         
     } catch (error) {
         console.log('Error:', error); 
     }
@@ -92,13 +93,17 @@ async function searchForPictures(searchTerm) {
         // Empty image container so that new images can be displayed 
         imageContainer.innerHTML = ''; 
         displayPhotos();  
-}; 
+ }; 
 
-window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
+
+    window.addEventListener('scroll', () => {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
         getPhotos(); 
-        ready = false;
-    }
-})
+        ready = false; 
+             
+           
+        }
+    })
+
  
 getPhotos(); 

@@ -19,7 +19,7 @@ h1 {
     color: rgb(26, 25, 25)
 }
 
-.search {
+#searchWrapper {
     color: rgb(37, 37, 37); 
     display: flex; 
     justify-content: center;
