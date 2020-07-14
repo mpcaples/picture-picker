@@ -1,12 +1,26 @@
 // HTML elements 
 const imageContainer = document.getElementById('image-container'); 
 const loader = document.getElementById('loader'); 
+const form = document.getElementById('form'); 
+const input = document.getElementById('searchTerm'); 
+const button = document.querySelector('button'); 
 
 // Unsplash API 
 const accessKey = 'LYVKBOGxzLRyn6OYr8W1wK1bZKd2VXEvqIxbMWh3n3g'; 
-let query = 'tiger'; 
+// let query = 'tiger'; 
 const count = 10; 
-const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&query=${query}&count=${count}`; 
+const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&count=${count}`; 
+
+// Form submit event listener 
+form.addEventListener('submit', formSubmitted); 
+
+function formSubmitted(e) {
+    e.preventDefault(); 
+    let searchTerm = input.value; 
+    searchForPictures(searchTerm); 
+}; 
+
+
 
 // Initiate an empty array to contain photos
 let photosArray = []; 
@@ -33,11 +47,11 @@ function imageLoaded() {
 // Fetch request 
 async function getPhotos() {
     try {
-        const response = await fetch(apiURL); 
+        let response = await fetch(apiURL); 
         photosArray = await response.json(); 
         displayPhotos(); 
     } catch (error) {
-
+        console.log('Error:', error); 
     }
 }; 
 
@@ -71,10 +85,19 @@ function displayPhotos() {
     }); 
 }; 
 
+async function searchForPictures(searchTerm) {
+    let url = `${apiURL}&query=${searchTerm}`; 
+    let response = await fetch(url); 
+        photosArray = await response.json(); 
+        // Empty image container so that new images can be displayed 
+        imageContainer.innerHTML = ''; 
+        displayPhotos();  
+}; 
+
 window.addEventListener('scroll', () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
         getPhotos(); 
-        ready = false; 
+        ready = false;
     }
 })
  
