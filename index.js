@@ -1,12 +1,18 @@
+
+
+
 // HTML elements 
 const imageContainer = document.getElementById('image-container'); 
 const loader = document.getElementById('loader'); 
 const form = document.getElementById('form'); 
 const input = document.getElementById('searchTerm'); 
 const button = document.querySelector('button'); 
+ 
+
 
 // Unsplash API 
-const accessKey = 'LYVKBOGxzLRyn6OYr8W1wK1bZKd2VXEvqIxbMWh3n3g'; 
+
+const accessKey = config.API_KEY; 
 // let query = 'tiger'; 
 const count = 10; 
 const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&count=${count}`; 
