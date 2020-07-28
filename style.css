@@ -16,14 +16,30 @@ h1 {
     font-family: 'Rajdhani', sans-serif; 
     font-size: 44px; 
     letter-spacing: 16px;
-    color: rgb(26, 25, 25)
+    color:rgb(37, 37, 37); 
 }
 
 #searchWrapper {
     color: rgb(37, 37, 37); 
     display: flex; 
     justify-content: center;
+
     
+}
+
+#searchTerm {
+    border: none; 
+    color: white; 
+    background-color: rgba(167, 154, 168, 0.63);
+    padding: 5px; 
+}
+
+button {
+    border: none; 
+    border-radius: 10px;
+    color: whitesmoke; 
+    background-color: rgba(71, 177, 219, 0.719);
+    padding: 5px; 
 }
 
 .image-container {

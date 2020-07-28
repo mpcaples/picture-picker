@@ -1,6 +1,3 @@
-
-
-
 // HTML elements 
 const imageContainer = document.getElementById('image-container'); 
 const loader = document.getElementById('loader'); 
@@ -13,7 +10,7 @@ const button = document.querySelector('button');
 // Unsplash API 
 
 const accessKey = config.API_KEY; 
-// let query = 'tiger'; 
+let searchTerm = '';  
 const count = 10; 
 const apiURL = `https://api.unsplash.com/photos/random/?client_id=${accessKey}&count=${count}`; 
 
@@ -22,8 +19,9 @@ form.addEventListener('submit', formSubmitted);
 
 function formSubmitted(e) {
     e.preventDefault(); 
-    let searchTerm = input.value;  
-    searchForPictures(searchTerm); 
+    searchTerm = input.value; 
+    imageContainer.innerHTML = ''; 
+    searchForPictures(); 
 }; 
 
 
@@ -92,22 +90,28 @@ function displayPhotos() {
     }); 
 }; 
 
-async function searchForPictures(searchTerm) {
+async function searchForPictures() {
     let url = `${apiURL}&query=${searchTerm}`; 
     let response = await fetch(url); 
         photosArray = await response.json(); 
         // Empty image container so that new images can be displayed 
-        imageContainer.innerHTML = ''; 
+       
         displayPhotos();  
  }; 
 
 
     window.addEventListener('scroll', () => {
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
-        getPhotos(); 
-        ready = false; 
+        
+       
+
+        if (searchTerm !== '') {
+            searchForPictures(); 
+        } else {
+            getPhotos(); 
+        }
              
-           
+        ready = false; 
         }
     })
 
